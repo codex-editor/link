@@ -73,11 +73,11 @@ Link Tool supports these configuration parameters:
 
 ## Output data
 
-This Tool returns `data` with following format
+This Tool returns `data` with following format:
 
 | Field          | Type      | Description                     |
 | -------------- | --------- | ------------------------------- |
-| link           | `string`  | Pasted link url                 |
+| link           | `string`  | Pasted or fetched link url      |
 | meta           | `object`  | Fetched link data. Any data got from backend. Currently title, image and description are supported by plugin's design. |
 
 ```json
@@ -115,12 +115,15 @@ Backend response **should** cover following format:
 
 **success** — uploading status. 1 for successful, 0 for failed
 
-**meta** — link fetched data. 
+**link** — pasted link can be updated (e.g. after redirects)
 
-Currently title, image and description fields are supported by plugin's design . They should have the following format in the response:
+**meta** — link fetched data
+
+Currently **link**, **title**, **image** and **description** fields are supported by plugin's design. They should have the following format in the response:
 ```json5
 {
     "success" : 1,
+    "link": "https://codex.so",
     "meta": {
         "title" : "CodeX Team",
         "description" : "Club of web-development, design and marketing. We build team learning how to build full-valued projects on the world market.",
